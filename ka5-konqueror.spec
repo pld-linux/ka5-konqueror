@@ -1,14 +1,14 @@
-%define		kdeappsver	18.12.0
+%define		kdeappsver	18.12.1
 %define		qtver		5.9.0
 %define		kaname		konqueror
 Summary:	konqueror
 Name:		ka5-%{kaname}
-Version:	18.12.0
+Version:	18.12.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	47c261d7ff09fb68957e9dc63cade6c1
+# Source0-md5:	a15e614cadaecace41cbc797f518644e
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -33,6 +33,7 @@ BuildRequires:	kf5-kcrash-devel >= 5.27.0
 BuildRequires:	kf5-kdelibs4support-devel >= 5.27.0
 BuildRequires:	kf5-khtml-devel >= 5.27.0
 BuildRequires:	kf5-kparts-devel
+BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
@@ -68,14 +69,14 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 install -d build
 cd build
 %cmake \
+	-G Ninja \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	..
-%{__make}
+%ninja_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} -C build install \
-	DESTDIR=$RPM_BUILD_ROOT
+%ninja_install -C build
 
 %find_lang %{kaname} --all-name --with-qm
 
@@ -180,8 +181,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/64x64/actions/validators.png
 %{_iconsdir}/hicolor/64x64/apps/konqueror.png
 %{_iconsdir}/hicolor/64x64/apps/webengine.png
-%{_iconsdir}/oxygen/scalable/actions/htmlvalidator.svgz
-%{_iconsdir}/oxygen/scalable/actions/validators.svgz
+%{_iconsdir}/hicolor/scalable/actions/htmlvalidator.svgz
+%{_iconsdir}/hicolor/scalable/actions/validators.svgz
 %dir %{_datadir}/kcmcss
 %{_datadir}/kcmcss/template.css
 %{_datadir}/kcontrol/pics/onlyone.png
@@ -212,6 +213,19 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/metainfo/org.kde.konqueror.appdata.xml
 %dir %{_datadir}/webenginepart
 %{_datadir}/webenginepart/error.html
+%dir %{_datadir}/webenginepart/kpartplugins
+%{_datadir}/webenginepart/kpartplugins/akregator_konqfeedicon.desktop
+%{_datadir}/webenginepart/kpartplugins/akregator_konqfeedicon.rc
+%{_datadir}/webenginepart/kpartplugins/autorefresh.desktop
+%{_datadir}/webenginepart/kpartplugins/autorefresh.rc
+%{_datadir}/webenginepart/kpartplugins/khtmlsettingsplugin.desktop
+%{_datadir}/webenginepart/kpartplugins/khtmlsettingsplugin.rc
+%{_datadir}/webenginepart/kpartplugins/khtmltts.desktop
+%{_datadir}/webenginepart/kpartplugins/khtmltts.rc
+%{_datadir}/webenginepart/kpartplugins/plugin_babelfish.rc
+%{_datadir}/webenginepart/kpartplugins/plugin_translator.desktop
+%{_datadir}/webenginepart/kpartplugins/plugin_validators.desktop
+%{_datadir}/webenginepart/kpartplugins/plugin_validators.rc
 
 %files devel
 %defattr(644,root,root,755)
