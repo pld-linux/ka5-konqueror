@@ -1,14 +1,15 @@
-%define		kdeappsver	18.12.1
+%define		kdeappsver	19.04.1
+%define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		konqueror
 Summary:	konqueror
 Name:		ka5-%{kaname}
-Version:	18.12.1
+Version:	19.04.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	a15e614cadaecace41cbc797f518644e
+# Source0-md5:	812da7884e0b92f45c1ee16c7d86fcf6
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -25,19 +26,20 @@ BuildRequires:	Qt5WebEngine-devel >= 5.11.1
 BuildRequires:	Qt5Widgets-devel
 BuildRequires:	Qt5X11Extras-devel
 BuildRequires:	gettext-devel
-BuildRequires:	kf5-extra-cmake-modules >= 5.53.0
-BuildRequires:	kf5-karchive-devel >= 5.27.0
-BuildRequires:	kf5-kbookmarks-devel
-BuildRequires:	kf5-kcmutils-devel >= 5.27.0
-BuildRequires:	kf5-kcrash-devel >= 5.27.0
-BuildRequires:	kf5-kdelibs4support-devel >= 5.27.0
-BuildRequires:	kf5-khtml-devel >= 5.27.0
-BuildRequires:	kf5-kparts-devel
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-karchive-devel >= %{kframever}
+BuildRequires:	kf5-kbookmarks-devel >= %{kframever}
+BuildRequires:	kf5-kcmutils-devel >= %{kframever}
+BuildRequires:	kf5-kcrash-devel >= %{kframever}
+BuildRequires:	kf5-kdelibs4support-devel >= %{kframever}
+BuildRequires:	kf5-khtml-devel >= %{kframever}
+BuildRequires:	kf5-kparts-devel >= %{kframever}
 BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	tidy-devel
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 BuildRequires:	zlib-devel
@@ -70,6 +72,7 @@ install -d build
 cd build
 %cmake \
 	-G Ninja \
+	-DHTML_INSTALL_DIR=%{_kdedocdir} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	..
 %ninja_build
@@ -78,7 +81,8 @@ cd build
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
-%find_lang %{kaname} --all-name --with-qm
+rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/{el,sr}
+%find_lang %{kaname} --all-name --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -101,7 +105,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkdeinit5_konqueror.so
 %attr(755,root,root) %ghost %{_libdir}/libkonquerorprivate.so.5
 %attr(755,root,root) %{_libdir}/libkonquerorprivate.so.5.*.*
-%attr(755,root,root) %{_libdir}/libkwebenginepartlib.so
+%attr(755,root,root) %{_libdir}/libkwebenginepart.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/akregatorkonqfeedicon.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/autorefresh.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/babelfishplugin.so
