@@ -1,15 +1,15 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		konqueror
 Summary:	konqueror
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	812da7884e0b92f45c1ee16c7d86fcf6
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	d19106a5af08e87a8c97e0fd8581a789
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -81,7 +81,7 @@ cd build
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
-rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/{el,sr}
+rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/{el,ko,sr,zh_CN}
 %find_lang %{kaname} --all-name --with-kde
 
 %clean
@@ -92,9 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-/etc/xdg/akregatorplugin.categories
 /etc/xdg/autostart/konqy_preload.desktop
-/etc/xdg/konqueror.categories
 /etc/xdg/translaterc
 %attr(755,root,root) %{_bindir}/fsview
 %attr(755,root,root) %{_bindir}/kfmclient
@@ -103,14 +101,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libKF5Konq.so.6
 %attr(755,root,root) %{_libdir}/libkdeinit5_kfmclient.so
 %attr(755,root,root) %{_libdir}/libkdeinit5_konqueror.so
-%attr(755,root,root) %ghost %{_libdir}/libkonquerorprivate.so.5
-%attr(755,root,root) %{_libdir}/libkonquerorprivate.so.5.*.*
 %attr(755,root,root) %{_libdir}/libkwebenginepart.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/akregatorkonqfeedicon.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/autorefresh.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/babelfishplugin.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/dirfilterplugin.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/domtreeviewerplugin.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/fsviewpart.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kcm_bookmarks.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kcm_konq.so
@@ -121,14 +116,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtmlsettingsplugin.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtmlttsplugin.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kimgallery.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/konq_aboutpage.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/konq_shellcmdplugin.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/minitoolsplugin.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/rellinksplugin.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/searchbarplugin.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/validatorsplugin.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/webarchiverplugin.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/webarchivethumbnail.so
 # TODO proper package
 %dir %{_datadir}/akregator/pics
 %{_datadir}/akregator/pics/feed.png
@@ -138,7 +127,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kfmclient_war.desktop
 %{_desktopdir}/konqbrowser.desktop
 %{_datadir}/config.kcfg/konqueror.kcfg
-%{_datadir}/config.kcfg/validators.kcfg
 %{_datadir}/dbus-1/interfaces/org.kde.Konqueror.Main.xml
 %{_datadir}/dbus-1/interfaces/org.kde.Konqueror.MainWindow.xml
 %dir %{_datadir}/dolphinpart
@@ -149,44 +137,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dolphinpart/kpartplugins/kimgalleryplugin.rc
 %{_datadir}/dolphinpart/kpartplugins/kshellcmdplugin.desktop
 %{_datadir}/dolphinpart/kpartplugins/kshellcmdplugin.rc
-%dir %{_datadir}/domtreeviewer
-%{_datadir}/domtreeviewer/domtreeviewerui.rc
-%dir %{_datadir}/fsview
-%{_datadir}/fsview/fsview_part.rc
-%{_iconsdir}/hicolor/128x128/apps/konqueror.png
-%{_iconsdir}/hicolor/128x128/apps/webengine.png
-%{_iconsdir}/hicolor/16x16/actions/babelfish.png
-%{_iconsdir}/hicolor/16x16/actions/cssvalidator.png
-%{_iconsdir}/hicolor/16x16/actions/htmlvalidator.png
-%{_iconsdir}/hicolor/16x16/actions/imagegallery.png
-%{_iconsdir}/hicolor/16x16/actions/validators.png
-%{_iconsdir}/hicolor/16x16/actions/webarchiver.png
-%{_iconsdir}/hicolor/16x16/apps/konqueror.png
-%{_iconsdir}/hicolor/16x16/apps/webengine.png
-%{_iconsdir}/hicolor/22x22/actions/babelfish.png
-%{_iconsdir}/hicolor/22x22/actions/cssvalidator.png
-%{_iconsdir}/hicolor/22x22/actions/htmlvalidator.png
-%{_iconsdir}/hicolor/22x22/actions/imagegallery.png
-%{_iconsdir}/hicolor/22x22/actions/validators.png
-%{_iconsdir}/hicolor/22x22/actions/webarchiver.png
-%{_iconsdir}/hicolor/22x22/apps/fsview.png
-%{_iconsdir}/hicolor/22x22/apps/konqueror.png
-%{_iconsdir}/hicolor/22x22/apps/webengine.png
-%{_iconsdir}/hicolor/32x32/actions/htmlvalidator.png
-%{_iconsdir}/hicolor/32x32/actions/validators.png
-%{_iconsdir}/hicolor/32x32/apps/fsview.png
-%{_iconsdir}/hicolor/32x32/apps/konqueror.png
-%{_iconsdir}/hicolor/32x32/apps/webengine.png
-%{_iconsdir}/hicolor/48x48/actions/htmlvalidator.png
-%{_iconsdir}/hicolor/48x48/actions/validators.png
-%{_iconsdir}/hicolor/48x48/apps/konqueror.png
-%{_iconsdir}/hicolor/48x48/apps/webengine.png
-%{_iconsdir}/hicolor/64x64/actions/htmlvalidator.png
-%{_iconsdir}/hicolor/64x64/actions/validators.png
-%{_iconsdir}/hicolor/64x64/apps/konqueror.png
-%{_iconsdir}/hicolor/64x64/apps/webengine.png
-%{_iconsdir}/hicolor/scalable/actions/htmlvalidator.svgz
-%{_iconsdir}/hicolor/scalable/actions/validators.svgz
 %dir %{_datadir}/kcmcss
 %{_datadir}/kcmcss/template.css
 %{_datadir}/kcontrol/pics/onlyone.png
@@ -206,11 +156,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/khtml_filter.desktop
 %{_datadir}/kservices5/khtml_general.desktop
 %{_datadir}/kservices5/khtml_java_js.desktop
-%{_datadir}/kservices5/konq_aboutpage.desktop
 %{_datadir}/kservices5/org.kde.konqueror.desktop
-%{_datadir}/kservices5/webarchivethumbnail.desktop
 %{_datadir}/kservices5/webenginepart.desktop
-%{_datadir}/kservicetypes5/konqaboutpage.desktop
 %{_datadir}/kwebkitpart
 %dir %{_datadir}/kxmlgui5/webenginepart
 %{_datadir}/kxmlgui5/webenginepart/webenginepart.rc
@@ -228,8 +175,71 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/webenginepart/kpartplugins/khtmltts.rc
 %{_datadir}/webenginepart/kpartplugins/plugin_babelfish.rc
 %{_datadir}/webenginepart/kpartplugins/plugin_translator.desktop
-%{_datadir}/webenginepart/kpartplugins/plugin_validators.desktop
-%{_datadir}/webenginepart/kpartplugins/plugin_validators.rc
+%{_datadir}/qlogging-categories5/akregatorplugin.categories
+%{_datadir}/qlogging-categories5/konqueror.categories
+%{_iconsdir}/hicolor/128x128/apps/konqueror.png
+%{_iconsdir}/hicolor/128x128/apps/webengine.png
+%{_iconsdir}/hicolor/16x16/actions/babelfish.png
+%{_iconsdir}/hicolor/16x16/actions/imagegallery.png
+%{_iconsdir}/hicolor/16x16/apps/konqueror.png
+%{_iconsdir}/hicolor/16x16/apps/webengine.png
+%{_iconsdir}/hicolor/22x22/actions/babelfish.png
+%{_iconsdir}/hicolor/22x22/actions/imagegallery.png
+%{_iconsdir}/hicolor/22x22/apps/fsview.png
+%{_iconsdir}/hicolor/22x22/apps/konqueror.png
+%{_iconsdir}/hicolor/22x22/apps/webengine.png
+%{_iconsdir}/hicolor/32x32/apps/fsview.png
+%{_iconsdir}/hicolor/32x32/apps/konqueror.png
+%{_iconsdir}/hicolor/32x32/apps/webengine.png
+%{_iconsdir}/hicolor/48x48/apps/konqueror.png
+%{_iconsdir}/hicolor/48x48/apps/webengine.png
+%{_iconsdir}/hicolor/64x64/apps/konqueror.png
+%{_iconsdir}/hicolor/64x64/apps/webengine.png
+
+/etc/xdg/konqsidebartngrc
+%attr(755,root,root) %{_bindir}/kcreatewebarchive
+%attr(755,root,root) %{_libdir}/libkonqsidebarplugin.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkonqsidebarplugin.so.5
+%attr(755,root,root) %{_libdir}/libkonquerorprivate.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkonquerorprivate.so.5
+%attr(755,root,root) %{_libdir}/qt5/plugins/kcm_history.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konq_sidebar.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqsidebar_bookmarks.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqsidebar_history.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqsidebar_places.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqsidebar_tree.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/uachangerplugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/webarchiverplugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/webarchivethumbnail.so
+%{_datadir}/config.kcfg/kcreatewebarchive.kcfg
+%{_iconsdir}/hicolor/16x16/actions/webarchiver.png
+%{_iconsdir}/hicolor/22x22/actions/webarchiver.png
+%{_datadir}/kconf_update/webenginepart.upd
+%dir %{_datadir}/konqsidebartng/entries
+%{_datadir}/konqsidebartng/entries/bookmarks.desktop
+%{_datadir}/konqsidebartng/entries/fonts.desktop
+%{_datadir}/konqsidebartng/entries/history.desktop
+%{_datadir}/konqsidebartng/entries/home.desktop
+%{_datadir}/konqsidebartng/entries/places.desktop
+%{_datadir}/konqsidebartng/entries/remote.desktop
+%{_datadir}/konqsidebartng/entries/root.desktop
+%{_datadir}/konqsidebartng/entries/services.desktop
+%{_datadir}/konqsidebartng/entries/settings.desktop
+%dir %{_datadir}/konqsidebartng/plugins
+%{_datadir}/konqsidebartng/plugins/konqsidebar_bookmarks.desktop
+%{_datadir}/konqsidebartng/plugins/konqsidebar_history.desktop
+%{_datadir}/konqsidebartng/plugins/konqsidebar_places.desktop
+%{_datadir}/konqsidebartng/plugins/konqsidebar_tree.desktop
+%{_datadir}/kservices5/kcmhistory.desktop
+%{_datadir}/kservices5/konq_sidebartng.desktop
+%{_datadir}/kservices5/webarchivethumbnail.desktop
+%dir %{_datadir}/kxmlgui5/fsview
+%{_datadir}/kxmlgui5/fsview/fsview_part.rc
+%{_datadir}/qlogging-categories5/fsview.categories
+%{_datadir}/webenginepart/kpartplugins/plugin_webarchiver.desktop
+%{_datadir}/webenginepart/kpartplugins/plugin_webarchiver.rc
+%{_datadir}/webenginepart/kpartplugins/uachangerplugin.desktop
+%{_datadir}/webenginepart/kpartplugins/uachangerplugin.rc
 
 %files devel
 %defattr(644,root,root,755)
@@ -241,3 +251,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/KF5/libkonq_export.h
 %{_libdir}/cmake/KF5Konq
 %attr(755,root,root) %{_libdir}/libKF5Konq.so
+%{_includedir}/konqsidebarplugin.h
+%attr(755,root,root) %{_libdir}/libkonqsidebarplugin.so
