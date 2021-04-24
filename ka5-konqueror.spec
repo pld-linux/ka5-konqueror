@@ -1,15 +1,15 @@
-%define		kdeappsver	20.12.3
+%define		kdeappsver	21.04.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		konqueror
 Summary:	konqueror
 Name:		ka5-%{kaname}
-Version:	20.12.3
+Version:	21.04.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	d19106a5af08e87a8c97e0fd8581a789
+# Source0-md5:	d77bff2841fe5ad87ad236f6d3ba632e
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -98,7 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kfmclient
 %attr(755,root,root) %{_bindir}/konqueror
 %attr(755,root,root) %{_libdir}/libKF5Konq.so.5.*.*
-%attr(755,root,root) %{_libdir}/libKF5Konq.so.6
+%ghost %{_libdir}/libKF5Konq.so.6
 %attr(755,root,root) %{_libdir}/libkdeinit5_kfmclient.so
 %attr(755,root,root) %{_libdir}/libkdeinit5_konqueror.so
 %attr(755,root,root) %{_libdir}/libkwebenginepart.so
@@ -106,7 +106,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/autorefresh.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/babelfishplugin.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/dirfilterplugin.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/fsviewpart.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kcm_bookmarks.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kcm_konq.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kcm_konqhtml.so
@@ -199,11 +198,10 @@ rm -rf $RPM_BUILD_ROOT
 /etc/xdg/konqsidebartngrc
 %attr(755,root,root) %{_bindir}/kcreatewebarchive
 %attr(755,root,root) %{_libdir}/libkonqsidebarplugin.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkonqsidebarplugin.so.5
+%ghost %{_libdir}/libkonqsidebarplugin.so.5
 %attr(755,root,root) %{_libdir}/libkonquerorprivate.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkonquerorprivate.so.5
+%ghost %{_libdir}/libkonquerorprivate.so.5
 %attr(755,root,root) %{_libdir}/qt5/plugins/kcm_history.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/konq_sidebar.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqsidebar_bookmarks.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqsidebar_history.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqsidebar_places.so
@@ -240,6 +238,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/webenginepart/kpartplugins/plugin_webarchiver.rc
 %{_datadir}/webenginepart/kpartplugins/uachangerplugin.desktop
 %{_datadir}/webenginepart/kpartplugins/uachangerplugin.rc
+%attr(755,root,root) %{_libdir}/qt5/plugins/kf5/parts/fsviewpart.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kf5/parts/konq_sidebar.so
 
 %files devel
 %defattr(644,root,root,755)
@@ -250,6 +250,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/KF5/konq_version.h
 %{_includedir}/KF5/libkonq_export.h
 %{_libdir}/cmake/KF5Konq
-%attr(755,root,root) %{_libdir}/libKF5Konq.so
+%{_libdir}/libKF5Konq.so
 %{_includedir}/konqsidebarplugin.h
-%attr(755,root,root) %{_libdir}/libkonqsidebarplugin.so
+%{_libdir}/libkonqsidebarplugin.so
