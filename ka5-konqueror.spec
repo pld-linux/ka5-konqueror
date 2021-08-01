@@ -52,6 +52,14 @@ KHTML or KDEWebKit as rendering engines; File management using most of
 Dolphin's features (including version-control, service menus and the
 basic UI)
 
+%description -l pl.UTF-8
+Konqueror jest przeglądarką www KDE i szwajcarskim scyzorykiem do każdego
+rodzaju zarządzania plikami i ich podglądem.
+Cechy: przeglądanie www przy użyciu KHTML lub KDEWebKit jako silników
+renderowania; zarządzanie plikami używając większości możliwości
+Dolphina (łącznie z kontrolą wersji, menu i podstawowym UI).
+
+
 %package devel
 Summary:	Header files for %{kaname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kaname}
