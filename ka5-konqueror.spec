@@ -1,15 +1,15 @@
-%define		kdeappsver	21.04.3
+%define		kdeappsver	21.08.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		konqueror
 Summary:	konqueror
 Name:		ka5-%{kaname}
-Version:	21.04.3
+Version:	21.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	cea1d53aa8ebdd4b0cbb7b1b934402d0
+# Source0-md5:	23651366b22458607add649663389315
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -230,7 +230,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/konqsidebartng/entries/remote.desktop
 %{_datadir}/konqsidebartng/entries/root.desktop
 %{_datadir}/konqsidebartng/entries/services.desktop
-%{_datadir}/konqsidebartng/entries/settings.desktop
 %dir %{_datadir}/konqsidebartng/plugins
 %{_datadir}/konqsidebartng/plugins/konqsidebar_bookmarks.desktop
 %{_datadir}/konqsidebartng/plugins/konqsidebar_history.desktop
