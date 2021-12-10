@@ -1,15 +1,15 @@
-%define		kdeappsver	21.08.3
+%define		kdeappsver	21.12.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		konqueror
 Summary:	konqueror
 Name:		ka5-%{kaname}
-Version:	21.08.3
+Version:	21.12.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	a246e10ca0907cd766c2fb85c4f20548
+# Source0-md5:	4d8ad3f68be5bed1c82b072c0faf1741
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -53,9 +53,9 @@ Dolphin's features (including version-control, service menus and the
 basic UI)
 
 %description -l pl.UTF-8
-Konqueror jest przeglądarką www KDE i szwajcarskim scyzorykiem do każdego
-rodzaju zarządzania plikami i ich podglądem.
-Cechy: przeglądanie www przy użyciu KHTML lub KDEWebKit jako silników
+Konqueror jest przeglądarką www KDE i szwajcarskim scyzorykiem do
+każdego rodzaju zarządzania plikami i ich podglądem. Cechy:
+przeglądanie www przy użyciu KHTML lub KDEWebKit jako silników
 renderowania; zarządzanie plikami używając większości możliwości
 Dolphina (łącznie z kontrolą wersji, menu i podstawowym UI).
 
@@ -114,10 +114,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/autorefresh.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/babelfishplugin.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/dirfilterplugin.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/kcm_bookmarks.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/kcm_konq.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/kcm_konqhtml.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/kcm_performance.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kfileitemaction/akregatorplugin.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/parts/webenginepart.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtmlsettingsplugin.so
@@ -153,16 +149,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/khtml
 %{_datadir}/konqueror
 %{_datadir}/kservices5/akregator_konqplugin.desktop
-%{_datadir}/kservices5/bookmarks.desktop
-%{_datadir}/kservices5/filebehavior.desktop
 %{_datadir}/kservices5/fsview_part.desktop
-%{_datadir}/kservices5/kcmkonqyperformance.desktop
-%{_datadir}/kservices5/kcmperformance.desktop
-%{_datadir}/kservices5/khtml_appearance.desktop
-%{_datadir}/kservices5/khtml_behavior.desktop
-%{_datadir}/kservices5/khtml_filter.desktop
-%{_datadir}/kservices5/khtml_general.desktop
-%{_datadir}/kservices5/khtml_java_js.desktop
 %{_datadir}/kservices5/org.kde.konqueror.desktop
 %{_datadir}/kservices5/webenginepart.desktop
 %{_datadir}/kwebkitpart
@@ -209,7 +196,6 @@ rm -rf $RPM_BUILD_ROOT
 %ghost %{_libdir}/libkonqsidebarplugin.so.5
 %attr(755,root,root) %{_libdir}/libkonquerorprivate.so.*.*.*
 %ghost %{_libdir}/libkonquerorprivate.so.5
-%attr(755,root,root) %{_libdir}/qt5/plugins/kcm_history.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqsidebar_bookmarks.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqsidebar_history.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqsidebar_places.so
@@ -235,7 +221,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/konqsidebartng/plugins/konqsidebar_history.desktop
 %{_datadir}/konqsidebartng/plugins/konqsidebar_places.desktop
 %{_datadir}/konqsidebartng/plugins/konqsidebar_tree.desktop
-%{_datadir}/kservices5/kcmhistory.desktop
 %{_datadir}/kservices5/konq_sidebartng.desktop
 %{_datadir}/kservices5/webarchivethumbnail.desktop
 %dir %{_datadir}/kxmlgui5/fsview
@@ -247,6 +232,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/webenginepart/kpartplugins/uachangerplugin.rc
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/parts/fsviewpart.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/parts/konq_sidebar.so
+%dir %{_libdir}/qt5/plugins/konqueror_kcms
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/kcm_bookmarks.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/kcm_history.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/kcm_konq.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/kcm_performance.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/khtml_appearance.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/khtml_behavior.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/khtml_filter.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/khtml_general.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/khtml_java_js.so
 
 %files devel
 %defattr(644,root,root,755)
