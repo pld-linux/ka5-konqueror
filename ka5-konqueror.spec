@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	21.12.3
+%define		kdeappsver	22.04.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		konqueror
 Summary:	konqueror
 Name:		ka5-%{kaname}
-Version:	21.12.3
+Version:	22.04.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	5befca038d3a8ecf6ba8f4fd54c68931
+# Source0-md5:	8f610a39425a70305f210eb25a9efc09
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -59,8 +59,9 @@ basic UI)
 Konqueror jest przeglądarką www KDE i szwajcarskim scyzorykiem do
 każdego rodzaju zarządzania plikami i ich podglądem. Cechy:
 przeglądanie www przy użyciu KHTML lub KDEWebKit jako silników
-renderowania; zarządzanie plikami używając większości możliwości
-Dolphina (łącznie z kontrolą wersji, menu i podstawowym UI).
+renderowania; zarządzanie plikami używając większości
+możliwości Dolphina (łącznie z kontrolą wersji, menu i
+podstawowym UI).
 
 
 %package devel
@@ -127,9 +128,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/parts/webenginepart.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtmlsettingsplugin.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtmlttsplugin.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/kimgallery.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/konq_shellcmdplugin.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/searchbarplugin.so
 # TODO proper package
 %dir %{_datadir}/akregator/pics
 %{_datadir}/akregator/pics/feed.png
@@ -141,43 +139,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/konqueror.kcfg
 %{_datadir}/dbus-1/interfaces/org.kde.Konqueror.Main.xml
 %{_datadir}/dbus-1/interfaces/org.kde.Konqueror.MainWindow.xml
-%dir %{_datadir}/dolphinpart
-%dir %{_datadir}/dolphinpart/kpartplugins
-%{_datadir}/dolphinpart/kpartplugins/dirfilterplugin.desktop
-%{_datadir}/dolphinpart/kpartplugins/dirfilterplugin.rc
-%{_datadir}/dolphinpart/kpartplugins/kimgalleryplugin.desktop
-%{_datadir}/dolphinpart/kpartplugins/kimgalleryplugin.rc
-%{_datadir}/dolphinpart/kpartplugins/kshellcmdplugin.desktop
-%{_datadir}/dolphinpart/kpartplugins/kshellcmdplugin.rc
 %dir %{_datadir}/kcmcss
 %{_datadir}/kcmcss/template.css
 %{_datadir}/kcontrol/pics/onlyone.png
 %{_datadir}/kcontrol/pics/overlapping.png
 %dir %{_datadir}/kf5/kbookmark
 %{_datadir}/kf5/kbookmark/directory_bookmarkbar.desktop
-%{_datadir}/khtml
 %{_datadir}/konqueror
-%{_datadir}/kservices5/akregator_konqplugin.desktop
 %{_datadir}/kservices5/fsview_part.desktop
 %{_datadir}/kservices5/org.kde.konqueror.desktop
 %{_datadir}/kservices5/webenginepart.desktop
-%{_datadir}/kwebkitpart
 %dir %{_datadir}/kxmlgui5/webenginepart
 %{_datadir}/kxmlgui5/webenginepart/webenginepart.rc
 %{_datadir}/metainfo/org.kde.konqueror.appdata.xml
 %dir %{_datadir}/webenginepart
 %{_datadir}/webenginepart/error.html
-%dir %{_datadir}/webenginepart/kpartplugins
-%{_datadir}/webenginepart/kpartplugins/akregator_konqfeedicon.desktop
-%{_datadir}/webenginepart/kpartplugins/akregator_konqfeedicon.rc
-%{_datadir}/webenginepart/kpartplugins/autorefresh.desktop
-%{_datadir}/webenginepart/kpartplugins/autorefresh.rc
-%{_datadir}/webenginepart/kpartplugins/khtmlsettingsplugin.desktop
-%{_datadir}/webenginepart/kpartplugins/khtmlsettingsplugin.rc
-%{_datadir}/webenginepart/kpartplugins/khtmltts.desktop
-%{_datadir}/webenginepart/kpartplugins/khtmltts.rc
-%{_datadir}/webenginepart/kpartplugins/plugin_babelfish.rc
-%{_datadir}/webenginepart/kpartplugins/plugin_translator.desktop
 %{_datadir}/qlogging-categories5/akregatorplugin.categories
 %{_datadir}/qlogging-categories5/konqueror.categories
 %{_iconsdir}/hicolor/128x128/apps/konqueror.png
@@ -235,10 +211,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/kxmlgui5/fsview
 %{_datadir}/kxmlgui5/fsview/fsview_part.rc
 %{_datadir}/qlogging-categories5/fsview.categories
-%{_datadir}/webenginepart/kpartplugins/plugin_webarchiver.desktop
-%{_datadir}/webenginepart/kpartplugins/plugin_webarchiver.rc
-%{_datadir}/webenginepart/kpartplugins/uachangerplugin.desktop
-%{_datadir}/webenginepart/kpartplugins/uachangerplugin.rc
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/parts/fsviewpart.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/parts/konq_sidebar.so
 %dir %{_libdir}/qt5/plugins/konqueror_kcms
@@ -251,6 +223,37 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/khtml_filter.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/khtml_general.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/khtml_java_js.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/dolphinpart/kpartplugins/kimgallery.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/dolphinpart/kpartplugins/konq_shellcmdplugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/akregatorkonqfeediconkhtml_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/autorefreshkhtml_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/babelfishpluginkhtml_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/dirfilterpluginkhtml_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/khtmlsettingspluginkhtml_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/khtmlttspluginkhtml_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/konqueror_kget_browser_integrationkhtml_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/uachangerpluginkhtml_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/webarchiverpluginkhtml_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqueror/kpartplugins/searchbarplugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kget_browser_integration.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/akregatorkonqfeediconkwebkitpart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/autorefreshkwebkitpart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/babelfishpluginkwebkitpart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/dirfilterpluginkwebkitpart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/khtmlsettingspluginkwebkitpart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/khtmlttspluginkwebkitpart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/konqueror_kget_browser_integrationkwebkitpart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/uachangerpluginkwebkitpart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/webarchiverpluginkwebkitpart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/akregatorkonqfeediconwebenginepart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/autorefreshwebenginepart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/babelfishpluginwebenginepart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/dirfilterpluginwebenginepart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/khtmlsettingspluginwebenginepart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/khtmlttspluginwebenginepart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/konqueror_kget_browser_integrationwebenginepart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/uachangerpluginwebenginepart_kpartplugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/webarchiverpluginwebenginepart_kpartplugins.so
 
 %files devel
 %defattr(644,root,root,755)
@@ -264,3 +267,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libKF5Konq.so
 %{_includedir}/konqsidebarplugin.h
 %{_libdir}/libkonqsidebarplugin.so
+%{_includedir}/KF5/konq_kpart_plugin.h
+
