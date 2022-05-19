@@ -8,7 +8,7 @@
 Summary:	konqueror
 Name:		ka5-%{kaname}
 Version:	22.04.1
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
@@ -141,6 +141,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/interfaces/org.kde.Konqueror.MainWindow.xml
 %dir %{_datadir}/kcmcss
 %{_datadir}/kcmcss/template.css
+%dir %{_datadir}/kcontrol
+%dir %{_datadir}/kcontrol/pics
 %{_datadir}/kcontrol/pics/onlyone.png
 %{_datadir}/kcontrol/pics/overlapping.png
 %dir %{_datadir}/kf5/kbookmark
@@ -223,8 +225,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/khtml_filter.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/khtml_general.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/khtml_java_js.so
+%dir %{_libdir}/qt5/plugins/dolphinpart
+%dir %{_libdir}/qt5/plugins/dolphinpart/kpartplugins
 %attr(755,root,root) %{_libdir}/qt5/plugins/dolphinpart/kpartplugins/kimgallery.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/dolphinpart/kpartplugins/konq_shellcmdplugin.so
+%dir %{_libdir}/qt5/plugins/khtml
+%dir %{_libdir}/qt5/plugins/khtml/kpartplugins
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/akregatorkonqfeediconkhtml_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/autorefreshkhtml_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/babelfishpluginkhtml_kpartplugins.so
@@ -234,8 +240,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/konqueror_kget_browser_integrationkhtml_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/uachangerpluginkhtml_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/webarchiverpluginkhtml_kpartplugins.so
+%dir %{_libdir}/qt5/plugins/konqueror
+%dir %{_libdir}/qt5/plugins/konqueror/kpartplugins
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqueror/kpartplugins/searchbarplugin.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kget_browser_integration.so
+%dir %{_libdir}/qt5/plugins/kwebkitpart
+%dir %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins
 %attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/akregatorkonqfeediconkwebkitpart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/autorefreshkwebkitpart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/babelfishpluginkwebkitpart_kpartplugins.so
@@ -245,6 +255,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/konqueror_kget_browser_integrationkwebkitpart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/uachangerpluginkwebkitpart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/webarchiverpluginkwebkitpart_kpartplugins.so
+%dir %{_libdir}/qt5/plugins/webenginepart
+%dir %{_libdir}/qt5/plugins/webenginepart/kpartplugins
 %attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/akregatorkonqfeediconwebenginepart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/autorefreshwebenginepart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/babelfishpluginwebenginepart_kpartplugins.so
