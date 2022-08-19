@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.04.3
+%define		kdeappsver	22.08.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		konqueror
 Summary:	konqueror
 Name:		ka5-%{kaname}
-Version:	22.04.3
+Version:	22.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	640eec4aa9abb04b2fe702af8841fc6b
+# Source0-md5:	50a6f3ad1b0679f4ebd331f7dfd726cd
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -124,7 +124,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/akregatorkonqfeedicon.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/autorefresh.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/babelfishplugin.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/dirfilterplugin.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kfileitemaction/akregatorplugin.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/parts/webenginepart.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtmlsettingsplugin.so
@@ -235,7 +234,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/akregatorkonqfeediconkhtml_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/autorefreshkhtml_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/babelfishpluginkhtml_kpartplugins.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/dirfilterpluginkhtml_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/khtmlsettingspluginkhtml_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/khtmlttspluginkhtml_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/khtml/kpartplugins/konqueror_kget_browser_integrationkhtml_kpartplugins.so
@@ -250,7 +248,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/akregatorkonqfeediconkwebkitpart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/autorefreshkwebkitpart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/babelfishpluginkwebkitpart_kpartplugins.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/dirfilterpluginkwebkitpart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/khtmlsettingspluginkwebkitpart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/khtmlttspluginkwebkitpart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kwebkitpart/kpartplugins/konqueror_kget_browser_integrationkwebkitpart_kpartplugins.so
@@ -261,12 +258,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/akregatorkonqfeediconwebenginepart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/autorefreshwebenginepart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/babelfishpluginwebenginepart_kpartplugins.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/dirfilterpluginwebenginepart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/khtmlsettingspluginwebenginepart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/khtmlttspluginwebenginepart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/konqueror_kget_browser_integrationwebenginepart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/uachangerpluginwebenginepart_kpartplugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/webenginepart/kpartplugins/webarchiverpluginwebenginepart_kpartplugins.so
+%{_libdir}/qt5/plugins/dolphinpart/kpartplugins/dirfilterplugin.so
+%{_desktopdir}/org.kde.konqueror.desktop
 
 %files devel
 %defattr(644,root,root,755)
