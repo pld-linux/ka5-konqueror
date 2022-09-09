@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.08.0
+%define		kdeappsver	22.08.1
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		konqueror
 Summary:	konqueror
 Name:		ka5-%{kaname}
-Version:	22.08.0
+Version:	22.08.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	50a6f3ad1b0679f4ebd331f7dfd726cd
+# Source0-md5:	36d91db0ccc8f3aa191b937a89da438c
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Core-devel >= %{qtver}
