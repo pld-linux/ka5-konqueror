@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.04.3
+%define		kdeappsver	23.08.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		konqueror
 Summary:	konqueror
 Name:		ka5-%{kaname}
-Version:	23.04.3
+Version:	23.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	bee82a72047fda2bfbf0898c75d82a8c
+# Source0-md5:	f7ff20cf195c9aef90470f6986df236d
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -81,18 +81,16 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 %setup -q -n %{kaname}-%{version}
 
 %build
-install -d build
-cd build
 %cmake \
+	-B build \
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DHTML_INSTALL_DIR=%{_kdedocdir} \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-	..
-%ninja_build
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+%ninja_build -C build
 
 %if %{with tests}
-ctest
+ctest --test-dir build
 %endif
 
 
@@ -176,8 +174,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/48x48/apps/webengine.png
 %{_iconsdir}/hicolor/64x64/apps/konqueror.png
 %{_iconsdir}/hicolor/64x64/apps/webengine.png
-
 /etc/xdg/konqsidebartngrc
+/etc/xdg/useragenttemplatesrc
 %attr(755,root,root) %{_bindir}/kcreatewebarchive
 %attr(755,root,root) %{_libdir}/libkonqsidebarplugin.so.*.*.*
 %ghost %{_libdir}/libkonqsidebarplugin.so.5
@@ -266,9 +264,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/dolphinpart/kpartplugins/dirfilterplugin.so
 %{_desktopdir}/org.kde.konqueror.desktop
 %attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/khtml_cache.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/konqueror_kcms/khtml_useragent.so
+%{_desktopdir}/bookmarks.desktop
 
 %files devel
 %defattr(644,root,root,755)
+%{_includedir}/KF5/asyncselectorinterface.h
 %{_includedir}/KF5/konq_events.h
 %{_includedir}/KF5/konq_historyentry.h
 %{_includedir}/KF5/konq_historyprovider.h
